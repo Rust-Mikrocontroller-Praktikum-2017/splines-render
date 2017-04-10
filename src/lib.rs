@@ -10,7 +10,7 @@ use core::ops::{Add, Sub, AddAssign, SubAssign, Mul};
 
 const ONE_THIRD: f32 = 1_f32 / 3_f32;
 
-#[derive(Clone, Copy, Debug)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub struct Point {
     pub x: f32,
     pub y: f32,
@@ -67,13 +67,7 @@ impl Mul<f32> for Point {
     }
 }
 
-impl PartialEq for Point {
-    fn eq(&self, other: &Self) -> bool {
-        self.x == other.x && self.y == other.y
-    }
-}
-
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct ControlPoly {
     pub data: Vec<Point>,
     pub closed: bool,
