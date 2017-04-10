@@ -125,6 +125,32 @@ impl ControlPoly {
 }
 
 #[test]
+fn test_casteljau() {
+    //! This tests the casteljau implementation,
+    //! assuming one casteljau iteration of the given numbers.
+    use collections::vec;
+    let ctrl: ControlPoly = ControlPoly {
+        data: vec![Point { x: 0f32, y: 0f32 },
+                   Point { x: 0f32, y: 1f32 },
+                   Point { x: 1f32, y: 1f32 },
+                   Point { x: 1f32, y: 0f32 }],
+        closed: false, // not yet used
+        line_thickness: 10, // not yet used
+    };
+    let draw = ctrl.eval_with_casteljau();
+    let correct_draw = ControlPoly {
+        data: vec![Point { x: 0f32, y: 0f32 },
+                   Point { x: 0f32, y: 0.5 },
+                   Point { x: 0.25, y: 0.75 },
+                   Point { x: 0.5, y: 0.75 },
+                   Point { x: 1f32, y: 0f32 }],
+        closed: false,
+        line_thickness: 10,
+    };
+    assert_eq!(draw, correct_draw);
+}
+
+#[test]
 fn test_divisor_half() {
     let p00 = Point { x: 0f32, y: 0f32 };
     let p01 = Point { x: 0f32, y: 1f32 };
