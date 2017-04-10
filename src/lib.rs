@@ -1,9 +1,7 @@
 #![feature(alloc,collections)]
 #![feature(use_extern_macros)]
 #![no_std]
-//extern crate core;
 extern crate alloc;
-//#[macro_use]
 extern crate collections;
 use collections::vec::Vec;
 use core::ops::{Add, Sub, AddAssign, SubAssign, Mul};
