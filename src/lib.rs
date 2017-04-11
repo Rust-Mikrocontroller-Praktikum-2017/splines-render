@@ -6,8 +6,6 @@ extern crate collections;
 use collections::vec::Vec;
 use core::ops::{Add, Sub, AddAssign, SubAssign, Mul};
 
-const ONE_THIRD: f32 = 1_f32 / 3_f32;
-
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct Point {
     pub x: f32,
@@ -118,7 +116,7 @@ impl ControlPoly {
     }
 
     fn a_frame_divisor(left: Point, right: Point) -> Point {
-        left + (right - left) * ONE_THIRD
+        left + (right - left) * (1_f32 / 3_f32)
     }
 }
 
