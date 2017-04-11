@@ -1,4 +1,14 @@
 [root]
 name = "splines"
 version = "0.1.0"
+dependencies = [
+ "renderer 0.1.0 (git+https://github.com/Rust-Mikrocontroller-Praktikum-2017/renderer?branch=testing)",
+]
 
+[[package]]
+name = "renderer"
+version = "0.1.0"
+source = "git+https://github.com/Rust-Mikrocontroller-Praktikum-2017/renderer?branch=testing#5e489e25d25f5de70a2ef23579e233f1284018a5"
+
+[metadata]
+"checksum renderer 0.1.0 (git+https://github.com/Rust-Mikrocontroller-Praktikum-2017/renderer?branch=testing)" = "<none>"
