@@ -3,7 +3,7 @@
 #![no_std]
 extern crate alloc;
 extern crate collections;
-extern crate renderer;
+pub extern crate renderer;
 use collections::vec::Vec;
 use core::ops::{Add, Sub, AddAssign, SubAssign, Mul};
 use renderer::coordinates::{Pixel16, Coord2D};
@@ -30,15 +30,15 @@ impl ControlPoly {
         let n = vec.len();
         output.push(vec[0]);
         output.push(vec[n - 1]);
-        for k in 1..n {
+        for k in 1..(n + 1) {
             let mut result: Vec<Coord2D> = Vec::new();
             for i in 0..n - k {
                 let p = ControlPoly::casteljau_divisor_half(vec[i], vec[i + 1]);
                 result.push(p);
                 if i == 0 {
                     output.insert(k, p);
-                } else if i == n - k {
-                    let l = output.len() - 2;
+                } else if n - 1 == i + k {
+                    let l = output.len() - k;
                     output.insert(l, p);
                 }
             }
