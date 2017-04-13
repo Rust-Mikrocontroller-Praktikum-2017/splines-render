@@ -21,11 +21,11 @@ fn main() {
     };
     //ctrl.data = aabb.fit_in_aabb(ctrl.data.as_slice());
     // ControlPoly -> spline approximation
-    let spline = ctrl.eval_with_casteljau();
-    println!("ctrl_inAABB: {:?}\nspline: {:?}", ctrl.data, spline.data);
+    let spline = ctrl.eval_spline_uniform((aabb.min.x - aabb.max.x) / 20);
+    println!("ctrl_inAABB: {:?}\nspline: {:?}", ctrl.data, spline);
     // set up renderer
     let func = |x, y, color| print!("({}, {})", x, y);
     let mut r = Renderer { pixel_col_fn: func };
     // plot data into given AABB.
-    r.draw_lines(aabb, spline.data);
+    r.draw_lines(aabb, spline);
 }
